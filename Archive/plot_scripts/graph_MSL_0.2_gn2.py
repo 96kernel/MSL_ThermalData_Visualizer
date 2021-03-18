@@ -1,4 +1,5 @@
 import matplotlib
+import argparse 
 # matplotlib.use('Qt5Agg')
 from matplotlib import pyplot as plt
 from matplotlib.dates import date2num, DateFormatter
@@ -8,8 +9,16 @@ import time
 
 
 st = time.time()
-# load data
-file_loc = r'UEG_LGN2.txt'
+parser = argparse.ArgumentParser()
+
+parser.add_argument('-i', '--infile', type=str)
+args = parser.parse_args()
+
+if not args.infile:
+    file_loc = r'UEG_LGN2.txt'
+
+else:
+    file_loc = args.infile
 
 df = pd.read_csv(file_loc, header = 3, usecols=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17], skiprows = [6], encoding = 'iso8859-1')
 
