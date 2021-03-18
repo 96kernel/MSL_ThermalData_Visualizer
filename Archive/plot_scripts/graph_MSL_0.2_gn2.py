@@ -1,6 +1,6 @@
 import matplotlib
 import argparse 
-# matplotlib.use('Qt5Agg')
+matplotlib.use('Qt5Agg')
 from matplotlib import pyplot as plt
 from matplotlib.dates import date2num, DateFormatter
 import pandas as pd
@@ -100,7 +100,7 @@ ax1.set_xlabel('date/time')
 ax1.set_ylabel('Temperature Change Rate (°C/min)')
 # ax1.set_ylim([-40, 90])
 ax1.grid()
-ax1.legend()
+ax1.legend().set_draggable(True)
 
 print('plot format time (s):', time.time()-st)
 
